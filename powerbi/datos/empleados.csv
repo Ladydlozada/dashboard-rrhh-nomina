@@ -1,0 +1,133 @@
+ID,Nombre,Departamento,Puesto,Nivel,Salario,FechaIngreso,Estado,Rating,FechaBaja,AnioIngreso
+E001,Lucía Rodríguez,Ventas,Ejecutivo de Ventas,Analista,3760,2022-02-17,Activo,4.5,,2022
+E003,Julieta Fernández,Operaciones,Especialista en Soporte,Especialista,3010,2022-05-06,Activo,3.5,,2022
+E004,Isabella Suárez,IT,Arquitecto de Software,Senior,3270,2022-07-26,Licencia,2.9,,2022
+E006,Ramiro López,Ventas,Account Manager,Senior,3550,2022-11-21,Activo,3.8,,2022
+E007,Valentina Ramírez,IT,QA Analyst,Analista,3130,2022-12-12,Activo,3.0,,2022
+E008,Leandro Ibáñez,IT,Desarrollador Sr,Senior,4100,2022-12-15,Activo,4.0,,2022
+E009,Antonia Acosta,IT,Desarrollador Sr,Senior,4840,2023-02-11,Activo,4.8,,2023
+E011,Bruno Acosta,IT,Arquitecto de Software,Senior,3760,2023-02-14,Activo,3.5,,2023
+E012,Daniela Núñez,Operaciones,Especialista en Soporte,Especialista,2720,2023-02-17,Activo,3.3,,2023
+E013,Emiliano Vera,IT,Arquitecto de Software,Senior,3390,2023-02-27,Activo,3.1,,2023
+E014,Catalina Pérez,IT,Desarrollador Jr,Junior,3480,2023-03-09,Activo,3.8,,2023
+E015,Camila Ramírez,RRHH,Generalista de RRHH,Analista,2990,2023-04-16,Activo,3.2,,2023
+E017,Julián Rojas,Operaciones,Coordinador Logístico,Especialista,3430,2023-04-17,Activo,4.1,,2023
+E018,Abril Sánchez,Ventas,Representante Comercial,Junior,2110,2023-05-07,Activo,2.5,,2023
+E019,Valentina Álvarez,RRHH,Reclutador,Junior,3720,2023-05-12,Activo,4.5,,2023
+E020,Joaquín Álvarez,IT,DevOps Engineer,Analista,4760,2023-05-19,Activo,5.0,,2023
+E021,Antonia Fernández,IT,QA Analyst,Analista,4530,2023-06-02,Activo,4.7,,2023
+E022,Sebastián Gómez,Ventas,Representante Comercial,Junior,3120,2023-06-15,Activo,3.9,,2023
+E023,Antonia Benítez,IT,DevOps Engineer,Analista,2810,2023-06-27,Activo,2.7,,2023
+E024,Joaquín Sánchez,Ventas,Ejecutivo de Ventas,Analista,3430,2023-07-03,Activo,4.1,,2023
+E025,Victoria Núñez,IT,Desarrollador Jr,Junior,3540,2023-07-20,Activo,3.8,,2023
+E026,Valentina García,RRHH,Especialista en Nómina,Especialista,3180,2023-07-25,Activo,3.4,,2023
+E027,Renata Medina,Operaciones,Coordinador Logístico,Especialista,2830,2023-08-08,Activo,3.2,,2023
+E028,Sofía Rodríguez,Operaciones,Especialista en Soporte,Especialista,2120,2023-08-11,Activo,2.5,,2023
+E029,Josefina Martínez,Finanzas,Controller,Senior,3680,2023-09-11,Activo,3.8,,2023
+E030,Emilia Flores,Ventas,Account Manager,Senior,3560,2023-10-20,Activo,3.9,,2023
+E032,Rocío Romero,RRHH,Reclutador,Junior,2870,2023-11-10,Activo,3.5,,2023
+E033,Tomás Medina,IT,DevOps Engineer,Analista,3470,2023-11-15,Activo,3.6,,2023
+E034,Emiliano Díaz,RRHH,Especialista en Nómina,Especialista,3140,2023-11-27,Activo,3.5,,2023
+E035,Valentina López,IT,DevOps Engineer,Analista,3880,2023-12-02,Activo,3.9,,2023
+E036,Alejandro Álvarez,RRHH,Reclutador,Junior,2640,2023-12-14,Activo,3.2,,2023
+E037,Andrés Vera,RRHH,Especialista en Nómina,Especialista,3510,2023-12-19,Activo,3.8,,2023
+E038,Valentina Sánchez,Ventas,Account Manager,Senior,3270,2024-01-01,Activo,3.6,,2024
+E040,Sofía González,IT,DevOps Engineer,Analista,4390,2024-01-24,Activo,4.6,,2024
+E041,Andrés Benítez,Finanzas,Controller,Senior,3680,2024-01-28,Licencia,3.7,,2024
+E042,Valeria Rivas,Operaciones,Coordinador Logístico,Especialista,2860,2024-02-14,Activo,3.4,,2024
+E043,Diego Rojas,Finanzas,Controller,Senior,3870,2024-03-19,Activo,3.9,,2024
+E044,Julián Molina,Finanzas,Tesorero,Especialista,2560,2024-03-19,Activo,2.5,,2024
+E045,Tomás Ramírez,IT,QA Analyst,Analista,4050,2024-04-20,Activo,4.2,,2024
+E046,Martina Rodríguez,Operaciones,Analista de Operaciones,Analista,2970,2024-05-01,Activo,3.6,,2024
+E047,Valentina Fernández,IT,Desarrollador Jr,Junior,2420,2024-05-07,Activo,2.6,,2024
+E048,Julieta Núñez,IT,QA Analyst,Analista,3590,2024-05-08,Activo,3.6,,2024
+E049,Sofía Ibáñez,RRHH,Reclutador,Junior,3250,2024-05-12,Activo,3.9,,2024
+E050,Antonella García,RRHH,Especialista en Nómina,Especialista,3360,2024-05-12,Activo,3.7,,2024
+E051,Victoria Gómez,Finanzas,Analista Financiero,Analista,3160,2024-05-15,Activo,3.5,,2024
+E052,Facundo Díaz,IT,Arquitecto de Software,Senior,4130,2024-05-24,Activo,3.9,,2024
+E053,Daniela Molina,IT,Arquitecto de Software,Senior,3510,2024-06-01,Activo,3.3,,2024
+E055,Facundo Silva,Ventas,Representante Comercial,Junior,2920,2024-07-14,Activo,3.4,,2024
+E057,Lucía Castro,Finanzas,Tesorero,Especialista,4100,2024-07-27,Activo,4.4,,2024
+E058,Rodrigo González,Operaciones,Especialista en Soporte,Especialista,3880,2024-07-28,Activo,4.9,,2024
+E059,Julieta Rodríguez,IT,Desarrollador Sr,Senior,3740,2024-08-04,Activo,3.5,,2024
+E060,Emilia Ortiz,Finanzas,Controller,Senior,4380,2024-08-08,Activo,4.4,,2024
+E061,Emilia Castro,Operaciones,Analista de Operaciones,Analista,3170,2024-09-07,Activo,4.0,,2024
+E062,Facundo García,Ventas,Representante Comercial,Junior,2990,2024-09-13,Activo,3.8,,2024
+E063,Paula Silva,IT,DevOps Engineer,Analista,4030,2024-09-14,Activo,4.2,,2024
+E064,Paula Romero,Operaciones,Analista de Operaciones,Analista,2690,2024-10-01,Activo,3.1,,2024
+E065,Lucas Herrera,Finanzas,Controller,Senior,2960,2024-10-08,Activo,2.9,,2024
+E066,Milagros González,RRHH,Generalista de RRHH,Analista,3610,2024-10-16,Activo,4.3,,2024
+E067,Rocío González,RRHH,Especialista en Nómina,Especialista,3460,2024-11-05,Activo,3.7,,2024
+E068,Maximiliano Fernández,RRHH,Analista de RRHH,Analista,3820,2024-11-07,Licencia,4.5,,2024
+E069,Isabella Benítez,IT,Arquitecto de Software,Senior,4570,2025-01-01,Activo,4.3,,2025
+E070,Camila Castro,Ventas,Representante Comercial,Junior,2530,2025-01-25,Activo,3.2,,2025
+E071,Victoria Castro,RRHH,Especialista en Nómina,Especialista,2600,2025-02-02,Licencia,2.9,,2025
+E072,Florencia Núñez,Finanzas,Analista Financiero,Analista,4330,2025-02-20,Activo,4.7,,2025
+E073,Ignacio Núñez,IT,DevOps Engineer,Analista,3760,2025-03-11,Activo,3.9,,2025
+E074,Valeria Martínez,IT,Desarrollador Sr,Senior,4640,2025-03-18,Activo,4.4,,2025
+E075,Ignacio Gómez,RRHH,Reclutador,Junior,2440,2025-03-26,Activo,2.9,,2025
+E076,Paula Suárez,Finanzas,Contador,Especialista,3110,2025-04-04,Activo,3.2,,2025
+E077,Milagros Pérez,Operaciones,Analista de Operaciones,Analista,3380,2025-04-11,Activo,4.3,,2025
+E079,Alejandro Molina,Operaciones,Coordinador Logístico,Especialista,2940,2025-05-13,Activo,3.5,,2025
+E080,Santiago Sánchez,IT,DevOps Engineer,Analista,4560,2025-06-01,Activo,4.8,,2025
+E081,Emiliano Gómez,Ventas,Ejecutivo de Ventas,Analista,2460,2025-06-03,Activo,2.9,,2025
+E082,Emilia Ruiz,IT,Desarrollador Sr,Senior,3550,2025-08-03,Activo,3.3,,2025
+E083,Ximena Rojas,Operaciones,Analista de Operaciones,Analista,3090,2025-10-07,Activo,4.0,,2025
+E084,Andrés Gómez,RRHH,Reclutador,Junior,3250,2025-10-21,Activo,4.0,,2025
+E085,Nicolás Benítez,IT,DevOps Engineer,Analista,3560,2025-10-22,Activo,3.8,,2025
+E086,Franco Molina,Ventas,Ejecutivo de Ventas,Analista,2830,2025-10-27,Activo,3.4,,2025
+E087,Rodrigo Ramírez,IT,DevOps Engineer,Analista,3940,2025-11-02,Activo,4.0,,2025
+E088,Benjamín Núñez,Finanzas,Analista Financiero,Analista,2120,2025-11-13,Activo,2.1,,2025
+E089,Joaquín Ortiz,RRHH,Reclutador,Junior,2650,2025-11-15,Licencia,3.1,,2025
+E091,Ignacio Ramírez,Operaciones,Especialista en Soporte,Especialista,2920,2025-12-12,Activo,3.6,,2025
+E092,Rocío Ruiz,RRHH,Analista de RRHH,Analista,3110,2025-12-14,Activo,3.2,,2025
+E093,Martina Álvarez,RRHH,Reclutador,Junior,2600,2025-12-28,Activo,3.0,,2025
+E094,Gonzalo Martínez,IT,Arquitecto de Software,Senior,3800,2026-01-07,Activo,3.4,,2026
+E095,Daniela Torres,RRHH,Reclutador,Junior,3180,2026-01-09,Activo,3.6,,2026
+E096,Matías López,RRHH,Especialista en Nómina,Especialista,3080,2026-01-10,Activo,3.1,,2026
+E097,Ramiro Ramírez,Finanzas,Contador,Especialista,3020,2026-02-15,Licencia,3.1,,2026
+E098,Camila Pérez,RRHH,Generalista de RRHH,Analista,4130,2026-02-20,Activo,4.8,,2026
+E100,Valentina Díaz,IT,Desarrollador Jr,Junior,3720,2026-03-08,Activo,4.2,,2026
+E101,Mateo Torres,Ventas,Representante Comercial,Junior,2860,2026-03-21,Activo,3.5,,2026
+E103,Alejandro Castro,IT,DevOps Engineer,Analista,3500,2026-04-07,Activo,3.7,,2026
+E104,Benjamín Suárez,Operaciones,Analista de Operaciones,Analista,3150,2026-04-18,Activo,3.9,,2026
+E105,Daniela Romero,RRHH,Generalista de RRHH,Analista,2510,2026-05-06,Activo,2.9,,2026
+E106,Lucía Sánchez,RRHH,Especialista en Nómina,Especialista,3450,2026-05-09,Activo,3.7,,2026
+E107,Tomás López,Ventas,Account Manager,Senior,3480,2026-05-14,Activo,3.7,,2026
+E108,Florencia Silva,Operaciones,Analista de Operaciones,Analista,3050,2026-05-18,Activo,3.9,,2026
+E109,Isabella Fernández,Ventas,Ejecutivo de Ventas,Analista,2480,2026-06-03,Activo,2.6,,2026
+E110,Camila Martínez,IT,DevOps Engineer,Analista,4150,2026-06-10,Activo,4.4,,2026
+E111,Lucía Álvarez,RRHH,Generalista de RRHH,Analista,3270,2026-06-22,Activo,3.7,,2026
+E112,Antonella Vera,RRHH,Generalista de RRHH,Analista,3450,2026-06-23,Activo,3.9,,2026
+E113,Valeria Ruiz,Ventas,Representante Comercial,Junior,3030,2026-06-26,Activo,3.9,,2026
+E114,Benjamín Pérez,Operaciones,Coordinador Logístico,Especialista,3320,2026-07-12,Activo,4.2,,2026
+E115,Benjamín Benítez,Operaciones,Analista de Operaciones,Analista,3100,2026-07-19,Activo,3.8,,2026
+E116,Renata Ramírez,Ventas,Representante Comercial,Junior,3020,2026-07-19,Activo,3.7,,2026
+E117,Carolina Martínez,Ventas,Account Manager,Senior,3510,2026-07-20,Activo,3.7,,2026
+E118,Abril Rojas,Operaciones,Especialista en Soporte,Especialista,2630,2026-08-02,Activo,3.0,,2026
+E119,Maximiliano Castro,RRHH,Reclutador,Junior,3350,2026-08-04,Activo,3.8,,2026
+E120,Joaquín Ruiz,Finanzas,Contador,Especialista,4430,2026-08-09,Activo,4.9,,2026
+E121,Alejandro López,Finanzas,Contador,Especialista,3480,2026-08-17,Activo,3.7,,2026
+E122,Gabriela Núñez,RRHH,Generalista de RRHH,Analista,2720,2026-08-20,Activo,3.0,,2026
+E123,Franco Ruiz,IT,QA Analyst,Analista,3460,2026-09-01,Activo,3.4,,2026
+E124,Matías González,Ventas,Ejecutivo de Ventas,Analista,2910,2026-09-19,Activo,3.5,,2026
+E125,Julián Ibáñez,IT,Arquitecto de Software,Senior,4260,2026-09-26,Activo,4.0,,2026
+E126,Ignacio Flores,RRHH,Generalista de RRHH,Analista,3570,2026-09-28,Activo,4.0,,2026
+E127,Ramiro Ruiz,Finanzas,Controller,Senior,3880,2026-10-01,Activo,3.8,,2026
+E128,Tomás Acosta,IT,DevOps Engineer,Analista,3420,2026-10-01,Activo,3.3,,2026
+E129,Valentina Ibáñez,Operaciones,Coordinador Logístico,Especialista,3290,2026-10-04,Activo,3.9,,2026
+E130,Tomás Sánchez,RRHH,Generalista de RRHH,Analista,3710,2026-10-05,Activo,4.3,,2026
+E131,Ignacio Martínez,IT,DevOps Engineer,Analista,3500,2026-10-06,Activo,3.7,,2026
+E132,Antonella Ibáñez,IT,Arquitecto de Software,Senior,3510,2026-10-07,Activo,3.3,,2026
+E002,Ramiro Romero,IT,Desarrollador Jr,Junior,3390,2022-03-07,Baja,3.6,2026-09-23,2022
+E005,Joaquín Núñez,Ventas,Account Manager,Senior,3900,2022-11-16,Baja,4.4,2026-05-11,2022
+E010,Joaquín Medina,RRHH,Generalista de RRHH,Analista,2570,2023-02-14,Baja,2.6,2026-10-13,2023
+E016,Ramiro Núñez,Operaciones,Analista de Operaciones,Analista,2450,2023-04-17,Baja,2.6,2026-06-24,2023
+E031,Matías Gómez,IT,Arquitecto de Software,Senior,3600,2023-11-02,Baja,3.3,2026-09-09,2023
+E039,Valeria Silva,Ventas,Ejecutivo de Ventas,Analista,2250,2024-01-06,Baja,2.5,2026-10-15,2024
+E054,Emilia García,IT,Arquitecto de Software,Senior,3370,2024-07-12,Baja,3.2,2026-08-09,2024
+E056,Catalina Romero,RRHH,Generalista de RRHH,Analista,3020,2024-07-17,Baja,3.2,2026-08-14,2024
+E078,Catalina Ramírez,Ventas,Representante Comercial,Junior,3240,2025-04-11,Baja,4.3,2026-07-18,2025
+E090,Lucía Rivas,Operaciones,Especialista en Soporte,Especialista,2100,2025-12-06,Baja,2.1,2026-10-20,2025
+E099,Emilia Herrera,Ventas,Representante Comercial,Junior,2200,2026-03-06,Baja,2.6,2026-06-08,2026
+E102,Valeria Ramírez,Ventas,Representante Comercial,Junior,3180,2026-03-28,Baja,3.9,2026-10-15,2026

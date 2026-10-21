@@ -1,0 +1,12 @@
+{
+  "name": "Nomina RRHH",
+  "dataColors": ["#0E7C7B", "#5B5F97", "#F2A541", "#E4572E", "#76B041", "#10263B"],
+  "background": "#FFFFFF",
+  "foreground": "#10263B",
+  "tableAccent": "#0E7C7B",
+  "textClasses": {
+    "title": { "fontFace": "Arial", "fontSize": 12, "color": "#10263B" },
+    "label": { "fontFace": "Arial", "fontSize": 10, "color": "#5B6670" },
+    "callout": { "fontFace": "Arial", "fontSize": 24, "color": "#10263B" }
+  }
+}

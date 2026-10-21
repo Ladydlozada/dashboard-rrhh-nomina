@@ -1,0 +1,229 @@
+// =====================================================================
+// Dashboard de Nómina y RRHH - Medidas DAX (equivalentes a las fórmulas del Excel)
+// Tablas: Empleados, Pagos, Meses  (ver guia-powerbi.md para el modelo)
+// Regla de "mes actual": las medidas toman el ÚLTIMO mes del contexto.
+//   - En una tarjeta (sin filtro de mes) = octubre 2026.
+//   - En un gráfico con Meses[Mes] en el eje = el mes de cada punto.
+// =====================================================================
+
+
+// ---------------------------------------------------------------------
+// 1) COLUMNAS CALCULADAS (tabla Empleados)
+//    Después: ordenar RangoSalarial por OrdenRango (Herramientas de columna > Ordenar por columna)
+// ---------------------------------------------------------------------
+RangoSalarial =
+SWITCH (
+    TRUE (),
+    Empleados[Salario] < 2500, "< $2.5K",
+    Empleados[Salario] < 3000, "$2.5K - $3.0K",
+    Empleados[Salario] < 3500, "$3.0K - $3.5K",
+    Empleados[Salario] < 4000, "$3.5K - $4.0K",
+    Empleados[Salario] < 4500, "$4.0K - $4.5K",
+    "> $4.5K"
+)
+
+OrdenRango =
+SWITCH (
+    TRUE (),
+    Empleados[Salario] < 2500, 1,
+    Empleados[Salario] < 3000, 2,
+    Empleados[Salario] < 3500, 3,
+    Empleados[Salario] < 4000, 4,
+    Empleados[Salario] < 4500, 5,
+    6
+)
+
+
+// ---------------------------------------------------------------------
+// 2) MEDIDAS BASE (las seis tarjetas)
+// ---------------------------------------------------------------------
+
+// Empleados vigentes a fin de mes: ya ingresaron y no tienen baja (o la baja es posterior).
+// Incluye personal en licencia, igual que en el Excel.
+Headcount =
+VAR fin = MAX ( Meses[FinMes] )
+RETURN
+    COUNTROWS (
+        FILTER (
+            Empleados,
+            Empleados[FechaIngreso] <= fin
+                && ( ISBLANK ( Empleados[FechaBaja] ) || Empleados[FechaBaja] > fin )
+        )
+    )
+
+Costo Nómina =
+VAR fin = MAX ( Meses[FinMes] )
+RETURN
+    SUMX (
+        FILTER (
+            Empleados,
+            Empleados[FechaIngreso] <= fin
+                && ( ISBLANK ( Empleados[FechaBaja] ) || Empleados[FechaBaja] > fin )
+        ),
+        Empleados[Salario]
+    )
+
+Salario Promedio = DIVIDE ( [Costo Nómina], [Headcount] )
+
+Contrataciones =
+VAR fin = MAX ( Meses[FinMes] )
+VAR ini = DATE ( YEAR ( fin ), MONTH ( fin ), 1 )
+RETURN
+    COUNTROWS (
+        FILTER ( Empleados, Empleados[FechaIngreso] >= ini && Empleados[FechaIngreso] <= fin )
+    )
+
+Bajas =
+VAR fin = MAX ( Meses[FinMes] )
+VAR ini = DATE ( YEAR ( fin ), MONTH ( fin ), 1 )
+RETURN
+    COUNTROWS (
+        FILTER (
+            Empleados,
+            NOT ISBLANK ( Empleados[FechaBaja] )
+                && Empleados[FechaBaja] >= ini
+                && Empleados[FechaBaja] <= fin
+        )
+    ) + 0   // el + 0 evita que un departamento sin bajas devuelva vacío en vez de 0
+
+Rotación % = DIVIDE ( [Bajas], [Headcount] )
+
+% Pago a Tiempo =
+VAR fin = MAX ( Meses[FinMes] )
+VAR ini = DATE ( YEAR ( fin ), MONTH ( fin ), 1 )
+VAR pagosMes = FILTER ( Pagos, Pagos[MesInicio] = ini )
+RETURN
+    DIVIDE (
+        COUNTROWS ( FILTER ( pagosMes, Pagos[Pago] = "Sí" ) ),
+        COUNTROWS ( pagosMes )
+    )
+
+
+// ---------------------------------------------------------------------
+// 3) MES ANTERIOR (para la variación de cada tarjeta)
+//    Se evalúa la misma medida con el filtro de Meses movido un mes atrás.
+//    (La fecha se guarda antes en una variable: DAX no permite MAX() dentro de la condición de CALCULATE.)
+// ---------------------------------------------------------------------
+Headcount Mes Ant =
+VAR mesAnt = EDATE ( MAX ( Meses[InicioMes] ), -1 )
+RETURN
+    CALCULATE ( [Headcount], Meses[InicioMes] = mesAnt )
+
+Costo Nómina Mes Ant =
+VAR mesAnt = EDATE ( MAX ( Meses[InicioMes] ), -1 )
+RETURN
+    CALCULATE ( [Costo Nómina], Meses[InicioMes] = mesAnt )
+
+Salario Promedio Mes Ant =
+VAR mesAnt = EDATE ( MAX ( Meses[InicioMes] ), -1 )
+RETURN
+    CALCULATE ( [Salario Promedio], Meses[InicioMes] = mesAnt )
+
+% Pago a Tiempo Mes Ant =
+VAR mesAnt = EDATE ( MAX ( Meses[InicioMes] ), -1 )
+RETURN
+    CALCULATE ( [% Pago a Tiempo], Meses[InicioMes] = mesAnt )
+
+Contrataciones Mes Ant =
+VAR mesAnt = EDATE ( MAX ( Meses[InicioMes] ), -1 )
+RETURN
+    CALCULATE ( [Contrataciones], Meses[InicioMes] = mesAnt )
+
+Rotación % Mes Ant =
+VAR mesAnt = EDATE ( MAX ( Meses[InicioMes] ), -1 )
+RETURN
+    CALCULATE ( [Rotación %], Meses[InicioMes] = mesAnt )
+
+
+// ---------------------------------------------------------------------
+// 4) VARIACIONES: relativa para cantidades y montos; diferencia (puntos porcentuales) para % de pago y rotación
+// ---------------------------------------------------------------------
+Var Headcount = DIVIDE ( [Headcount] - [Headcount Mes Ant], [Headcount Mes Ant] )
+Var Costo Nómina = DIVIDE ( [Costo Nómina] - [Costo Nómina Mes Ant], [Costo Nómina Mes Ant] )
+Var Salario Promedio = DIVIDE ( [Salario Promedio] - [Salario Promedio Mes Ant], [Salario Promedio Mes Ant] )
+Var Contrataciones = DIVIDE ( [Contrataciones] - [Contrataciones Mes Ant], [Contrataciones Mes Ant] )
+Var Pago pp = [% Pago a Tiempo] - [% Pago a Tiempo Mes Ant]
+Var Rotación pp = [Rotación %] - [Rotación % Mes Ant]
+
+
+// ---------------------------------------------------------------------
+// 5) ETIQUETAS DE LAS TARJETAS (texto "▲ 1.7% vs. mes ant.") - usar como subtítulo o etiqueta de categoría
+// ---------------------------------------------------------------------
+Etiqueta Headcount =
+VAR v = [Var Headcount]
+RETURN IF ( ROUND ( v * 100, 1 ) = 0, "● sin cambio vs. mes ant.",
+        IF ( v > 0, "▲ ", "▼ " ) & FORMAT ( ABS ( v ), "0.0%" ) & " vs. mes ant." )
+
+Etiqueta Costo Nómina =
+VAR v = [Var Costo Nómina]
+RETURN IF ( ROUND ( v * 100, 1 ) = 0, "● sin cambio vs. mes ant.",
+        IF ( v > 0, "▲ ", "▼ " ) & FORMAT ( ABS ( v ), "0.0%" ) & " vs. mes ant." )
+
+Etiqueta Salario Promedio =
+VAR v = [Var Salario Promedio]
+RETURN IF ( ROUND ( v * 100, 1 ) = 0, "● sin cambio vs. mes ant.",
+        IF ( v > 0, "▲ ", "▼ " ) & FORMAT ( ABS ( v ), "0.0%" ) & " vs. mes ant." )
+
+Etiqueta Contrataciones =
+VAR v = [Var Contrataciones]
+RETURN IF ( ROUND ( v * 100, 1 ) = 0, "● sin cambio vs. mes ant.",
+        IF ( v > 0, "▲ ", "▼ " ) & FORMAT ( ABS ( v ), "0.0%" ) & " vs. mes ant." )
+
+Etiqueta Pago =
+VAR v = [Var Pago pp]
+RETURN IF ( ROUND ( v * 100, 1 ) = 0, "● sin cambio vs. mes ant.",
+        IF ( v > 0, "▲ ", "▼ " ) & FORMAT ( ABS ( v ) * 100, "0.0" ) & " pp vs. mes ant." )
+
+Etiqueta Rotación =
+VAR v = [Var Rotación pp]
+RETURN IF ( ROUND ( v * 100, 1 ) = 0, "● sin cambio vs. mes ant.",
+        IF ( v > 0, "▲ ", "▼ " ) & FORMAT ( ABS ( v ) * 100, "0.0" ) & " pp vs. mes ant." )
+
+
+// ---------------------------------------------------------------------
+// 6) COLORES DE LAS ETIQUETAS (Formato condicional > Color de fuente > Valor de campo)
+//    Subir es bueno (verde) salvo en rotación, donde subir es malo (rojo).
+// ---------------------------------------------------------------------
+Color Headcount = IF ( ROUND ( [Var Headcount] * 100, 1 ) = 0, "#5B6670", IF ( [Var Headcount] > 0, "#2E7D32", "#C62828" ) )
+Color Costo Nómina = IF ( ROUND ( [Var Costo Nómina] * 100, 1 ) = 0, "#5B6670", IF ( [Var Costo Nómina] > 0, "#2E7D32", "#C62828" ) )
+Color Salario Promedio = IF ( ROUND ( [Var Salario Promedio] * 100, 1 ) = 0, "#5B6670", IF ( [Var Salario Promedio] > 0, "#2E7D32", "#C62828" ) )
+Color Contrataciones = IF ( ROUND ( [Var Contrataciones] * 100, 1 ) = 0, "#5B6670", IF ( [Var Contrataciones] > 0, "#2E7D32", "#C62828" ) )
+Color Pago = IF ( ROUND ( [Var Pago pp] * 100, 1 ) = 0, "#5B6670", IF ( [Var Pago pp] > 0, "#2E7D32", "#C62828" ) )
+Color Rotación = IF ( ROUND ( [Var Rotación pp] * 100, 1 ) = 0, "#5B6670", IF ( [Var Rotación pp] > 0, "#C62828", "#2E7D32" ) )
+
+
+// ---------------------------------------------------------------------
+// 7) MEDIDAS PARA LOS GRÁFICOS
+// ---------------------------------------------------------------------
+
+// Empleados vigentes hoy (Estado distinto de Baja): dona por departamento e histograma salarial
+Vigentes = CALCULATE ( COUNTROWS ( Empleados ), Empleados[Estado] <> "Baja" )
+
+// Salario promedio por departamento (solo vigentes)
+Salario Prom Vigentes = CALCULATE ( AVERAGE ( Empleados[Salario] ), Empleados[Estado] <> "Baja" )
+
+// R² entre rating de desempeño y salario (vigentes). DAX no trae RSQ, se calcula con sumas.
+R2 Desempeño vs Salario =
+VAR vig = FILTER ( Empleados, Empleados[Estado] <> "Baja" )
+VAR n = COUNTROWS ( vig )
+VAR sx = SUMX ( vig, Empleados[Rating] )
+VAR sy = SUMX ( vig, Empleados[Salario] )
+VAR sxy = SUMX ( vig, Empleados[Rating] * Empleados[Salario] )
+VAR sxx = SUMX ( vig, Empleados[Rating] ^ 2 )
+VAR syy = SUMX ( vig, Empleados[Salario] ^ 2 )
+VAR num = n * sxy - sx * sy
+VAR den = ( n * sxx - sx ^ 2 ) * ( n * syy - sy ^ 2 )
+RETURN
+    DIVIDE ( num ^ 2, den )
+
+
+// ---------------------------------------------------------------------
+// 8) HALLAZGO DE EJEMPLO (cuadro de texto dinámico). Los demás siguen el mismo patrón.
+// ---------------------------------------------------------------------
+Hallazgo Rotación =
+VAR mes = LOWER ( LOOKUPVALUE ( Meses[Mes], Meses[FinMes], MAX ( Meses[FinMes] ) ) )
+RETURN
+    "• La rotación de " & mes & " fue " & FORMAT ( [Rotación %], "0.0%" )
+        & " (" & [Bajas] & IF ( [Bajas] = 1, " baja", " bajas" ) & "), "
+        & IF ( [Rotación %] > [Rotación % Mes Ant], "mayor", "menor o igual" )
+        & " que la del mes anterior (" & FORMAT ( [Rotación % Mes Ant], "0.0%" ) & ")."
